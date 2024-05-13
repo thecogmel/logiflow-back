@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
 
-export class User {
+interface User {
   id: number;
   email: string;
   name: string;
@@ -8,4 +8,14 @@ export class User {
   password: string;
   createdAt: Date;
   updateAt: Date;
+}
+
+interface LoginRequest {
+  user: User;
+}
+
+interface JwtPayload {
+  sub: number;
+  email: string;
+  role: Role;
 }

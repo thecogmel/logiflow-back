@@ -34,6 +34,10 @@ export class UsersService {
     });
   }
 
+  async findByEmail(email: string) {
+    return await this.prisma.user.findUniqueOrThrow({ where: { email } });
+  }
+
   async update(id: number, updateUserDto: UpdateUserDto) {
     if (updateUserDto.password) {
       updateUserDto.password = await hashPassword(updateUserDto.password);
