@@ -18,12 +18,32 @@ enum Role {
   ADMIN
 }
 
+enum Status {
+  PENDING
+  DELIVERED
+  CANCELED
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
   password  String
   role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Delivery {
+  id             Int      @id @default(autoincrement())
+  customer_name  String
+  bakery_name    String
+  departure_time DateTime
+  arrival_time   DateTime
+  status         String
+  observations   String?
+  delivery_value Float
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
