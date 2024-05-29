@@ -37,13 +37,12 @@ model User {
 model Delivery {
   id             Int      @id @default(autoincrement())
   customer_name  String
-  bakery_name    String
+  address        String
   departure_time DateTime
   arrival_time   DateTime
-  status         String
+  status         String   @default("PENDING")
   observations   String?
   delivery_value Float
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
