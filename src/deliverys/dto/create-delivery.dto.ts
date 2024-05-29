@@ -1,6 +1,7 @@
 import {
   IsDateString,
   IsEnum,
+  IsISO8601,
   IsInt,
   IsNotEmpty,
   IsOptional,
@@ -11,9 +12,9 @@ export class CreateDeliveryDto implements Delivery {
   id: number;
 
   @IsDateString()
-  @IsNotEmpty()
   arrival_time: Date;
 
+  @IsOptional()
   @IsEnum(['PENDING', 'DELIVERED', 'CANCELED'])
   status: string;
 
@@ -30,7 +31,7 @@ export class CreateDeliveryDto implements Delivery {
   @IsNotEmpty()
   address: string;
 
-  @IsDateString()
+  @IsISO8601()
   @IsNotEmpty()
   departure_time: Date;
 
