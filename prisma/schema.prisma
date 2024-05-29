@@ -25,15 +25,18 @@ enum Status {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
   name      String?
   password  String
-  role      Role     @default(USER)
+  role      Role       @default(USER)
   lat       Float?
   long      Float?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Delivery  Delivery[]
+
+  @@map("users")
 }
 
 model Delivery {
@@ -42,9 +45,13 @@ model Delivery {
   address        String
   departure_time DateTime
   arrival_time   DateTime
-  status         String   @default("PENDING")
+  status         Status   @default(PENDING)
   observations   String?
   delivery_value Float
+  courier_id     Int // Campo para o motoboy
+  courier        User     @relation(fields: [courier_id], references: [id])
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  @@map("deliveries")
 }

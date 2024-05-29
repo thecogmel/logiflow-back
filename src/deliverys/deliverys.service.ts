@@ -25,15 +25,18 @@ export class DeliverysService {
     });
   }
 
-  update(id: number, updateDeliveryDto: UpdateDeliveryDto) {
+  async update(id: number, updateDeliveryDto: UpdateDeliveryDto) {
     const data = updateDeliveryDto;
-    return this.prisma.delivery.update({
+    return await this.prisma.delivery.update({
       where: { id },
       data,
     });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} delivery`;
+  async remove(id: number) {
+    await this.prisma.delivery.delete({
+      where: { id },
+    });
+    return { message: 'Delivery deleted successfully.' };
   }
 }

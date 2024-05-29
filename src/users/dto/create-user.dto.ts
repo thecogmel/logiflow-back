@@ -22,7 +22,7 @@ export class CreateUserDto implements User {
   name: string;
 
   @IsEnum(Role)
-  @IsNotEmpty()
+  @IsOptional()
   role: Role;
 
   @IsString()

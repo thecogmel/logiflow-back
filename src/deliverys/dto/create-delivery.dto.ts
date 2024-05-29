@@ -5,8 +5,10 @@ import {
   IsInt,
   IsNotEmpty,
   IsOptional,
+  IsPositive,
 } from 'class-validator';
 import { Delivery } from '../entities/delivery.entity';
+import { Status } from '@prisma/client';
 
 export class CreateDeliveryDto implements Delivery {
   id: number;
@@ -15,8 +17,8 @@ export class CreateDeliveryDto implements Delivery {
   arrival_time: Date;
 
   @IsOptional()
-  @IsEnum(['PENDING', 'DELIVERED', 'CANCELED'])
-  status: string;
+  @IsEnum(Status)
+  status: Status;
 
   @IsOptional()
   observations?: string;
@@ -34,6 +36,11 @@ export class CreateDeliveryDto implements Delivery {
   @IsISO8601()
   @IsNotEmpty()
   departure_time: Date;
+
+  @IsNotEmpty()
+  @IsInt()
+  @IsPositive()
+  courier_id: number;
 
   createdAt: Date;
   updatedAt: Date;

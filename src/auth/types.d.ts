@@ -6,6 +6,8 @@ interface User {
   name: string;
   role: Role;
   password: string;
+  lat: number;
+  long: number;
   createdAt: Date;
   updateAt: Date;
 }
