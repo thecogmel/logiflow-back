@@ -7,9 +7,10 @@ import {
   providePrismaClientExceptionFilter,
 } from 'nestjs-prisma';
 import { AuthModule } from './auth/auth.module';
+import { DeliverysModule } from './deliverys/deliverys.module';
 
 @Module({
-  imports: [UsersModule, PrismaModule, AuthModule],
+  imports: [UsersModule, PrismaModule, AuthModule, DeliverysModule],
   controllers: [AppController],
   providers: [AppService, providePrismaClientExceptionFilter()],
 })
