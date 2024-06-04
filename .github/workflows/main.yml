@@ -1,0 +1,25 @@
+name: Deploy to DigitalOcean Droplet
+'on':
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DigitalOcean Droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            pm2 stop all
+            rm -rf deploy-test
+            git clone https://github.com/thecogmel/deploy-test.git
+            cd deploy-test
+            yarn install
+            yarn build
+            yarn start:prod
+            echo 'Deployment to digital ocean finished'
