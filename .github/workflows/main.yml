@@ -18,7 +18,7 @@ jobs:
             pm2 stop all
             rm -rf logiflow-back
             git clone https://github.com/thecogmel/logiflow-back.git
-            cd deploy-test
+            cd logiflow-back
             yarn install
             yarn build
             yarn start:prod
