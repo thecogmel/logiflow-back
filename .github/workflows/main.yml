@@ -16,8 +16,8 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             pm2 stop all
-            rm -rf deploy-test
-            git clone https://github.com/thecogmel/deploy-test.git
+            rm -rf logiflow-back
+            git clone https://github.com/thecogmel/logiflow-back.git
             cd deploy-test
             yarn install
             yarn build
