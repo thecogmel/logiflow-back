@@ -1,7 +1,7 @@
 {
   "name": "logiflow-back",
   "version": "0.0.1",
-  "description": "teste",
+  "description": "Logiflow backend application",
   "author": "Erick Medeiros",
   "private": true,
   "license": "UNLICENSED",
