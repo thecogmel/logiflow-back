@@ -17,7 +17,9 @@ jobs:
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            npm --help
+            npm -v
+            node -v
+            yarn -v
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
